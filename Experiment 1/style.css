@@ -1,0 +1,19 @@
+form{
+    background-color: green;
+    width: 200px;
+    height: 100px;
+    border: 10px ridge red;
+    border-radius: 10px;
+    padding: 50px;
+    margin: 100px;
+    
+}
+body{
+    background-color: yellow;
+    display: flex;
+    /* 
+    flex-direction: column;
+    justify-content: space-around;
+    /* align-content: first baseline; */
+    
+}
