@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Destinations</h1>
+        <ul class="destination-list">
+            <li>
+                <span class="id">1</span>
+                <span class="place">Paris</span>
+                <span class="country">France</span>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <span class="id">2</span>
+                <span class="place">Tokyo</span>
+                <span class="country">Japan</span>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <span class="id">3</span>
+                <span class="place">Sydney</span>
+                <span class="country">Australia</span>
+                <button class="delete-btn">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // JavaScript to delete items
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const li = this.parentElement;
+                li.remove();
+            });
+        });
+    </script>
+</body>
+</html>
