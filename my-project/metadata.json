@@ -1,0 +1,5 @@
+{
+  "name": "Feature Flag Console",
+  "description": "A real-time feature flag management console to toggle and target features at runtime. This UI allows operators to define flags, set rollout rules, preview evaluations, and manage feature lifecycles safely.",
+  "requestFramePermissions": []
+}
