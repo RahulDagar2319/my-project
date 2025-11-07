@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom toast styles for smooth transitions */
+.toast-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.toast-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.toast-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Simple Diff Viewer Styles */
+.diff-add {
+    background-color: #e6ffed; /* bg-green-50 */
+    color: #065f46; /* text-green-800 */
+}
+.diff-remove {
+    background-color: #ffeeee; /* bg-red-50 */
+    color: #991b1b; /* text-red-800 */
+}
+.diff-line {
+    white-space: pre-wrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875rem;
+}
+.diff-line-number {
+    display: inline-block;
+    width: 2.5rem;
+    padding-right: 0.5rem;
+    text-align: right;
+    color: #6b7280; /* text-gray-500 */
+    opacity: 0.7;
+}

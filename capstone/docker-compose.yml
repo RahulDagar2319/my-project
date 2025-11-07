@@ -1,0 +1,58 @@
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - feature-flag-net
+
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    networks:
+      - feature-flag-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '5001:5001'
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/featureflags
+      - REDIS_URI=redis://redis:6379
+      - JWT_SECRET=your_jwt_secret_key_here_please_change_me
+      - PORT=5001
+    networks:
+      - feature-flag-net
+    restart: unless-stopped
+    # volumes:
+    #   - ./backend:/app
+    #   # Add this to avoid node_modules being overwritten by the volume mount
+    #   - /app/node_modules
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:80'
+    depends_on:
+      - backend
+    networks:
+      - feature-flag-net
+    # The harmful volume mount has been REMOVED.
+    # The Dockerfile's COPY command now handles serving the built files.
+
+networks:
+  feature-flag-net:
+    driver: bridge
+
+volumes:
+  mongo-data:
